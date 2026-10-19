@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Missing You, shri elakkiya Akka 💗</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: #795064;
+    background: linear-gradient(135deg, #fff0f5, #ffe0eb, #fff7fa);
+    overflow-x: hidden;
+}
+
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+    color: #e87899;
+    animation: float 6s ease-in-out infinite;
+    opacity: 0.6;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-25px);
+    }
+}
+
+.card {
+    position: relative;
+    z-index: 1;
+    width: min(600px, 92%);
+    min-height: 85vh;
+    margin: 7vh auto;
+    padding: 30px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #ffffffd9;
+    border: 1px solid white;
+    border-radius: 28px;
+    box-shadow: 0 15px 45px #dc73942b;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(2rem, 7vw, 3rem);
+    color: #c34f79;
+    line-height: 1.3;
+}
+
+p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.illustration {
+    font-size: 65px;
+    margin: 20px 0;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 13px 22px;
+    margin: 7px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+}
+
+.primary {
+    background: #e85d83;
+    color: white;
+}
+
+.secondary {
+    background: white;
+    color: #b34d72;
+    border: 1px solid #f0c6d4;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.wish {
+    padding: 20px;
+    background: #fff5f8;
+    border-radius: 18px;
+    line-height: 1.9;
+}
+
+.hearts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    gap: 15px;
+    margin: 20px;
+}
+
+.love-heart {
+    font-size: 48px;
+    background: transparent;
+    padding: 5px;
+}
+
+.note {
+    color: #b17b91;
+    font-size: 14px;
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 24px 16px;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<audio id="music" loop>
+    <source
+        src="https://cdn.pixabay.com/audio/2022/10/25/audio_946b6e1c2c.mp3"
+        type="audio/mpeg">
+</audio>
+
+<div class="card">
+
+    <!-- PAGE 1: WELCOME -->
+    <section id="page1">
+
+        <h1>I Miss You,<br>shri elakkiya Akka 💗</h1>
+
+        <p>
+            Some people are so special that even when
+            they aren't nearby, they stay close to our hearts.
+            There's something I want to tell you...
+        </p>
+
+        <div class="illustration">🫂🌷💌</div>
+
+        <button class="primary" onclick="start()">
+            Open my message 💌
+        </button>
+
+        <button class="secondary" onclick="notYet()">
+            Not yet, Akka 🙈
+        </button>
+
+        <p id="tease" class="note"></p>
+
+    </section>
+
+    <!-- PAGE 2: EMOTIONAL MESSAGE -->
+    <section id="page2" class="hidden">
+
+        <h1>A Little Truth... 🥺</h1>
+
+        <p>
+            I may not say it every day, but I really do
+            miss you, shri elakkiya Akka. The little conversations,
+            the laughs, and simply having you around
+            mean more to me than you know.
+        </p>
+
+        <div class="illustration">💗🫂💗</div>
+
+        <button class="primary" onclick="showPage(3)">
+            There's more to say... 💌
+        </button>
+
+    </section>
+
+    <!-- PAGE 3: INTERACTIVE HEARTS -->
+    <section id="page3" class="hidden">
+
+        <h1>Tap Each Heart 💕</h1>
+
+        <p>
+            Every heart holds something I want you to remember.
+        </p>
+
+        <div class="hearts-grid">
+
+            <button class="love-heart"
+                onclick="reveal(this, 'I am grateful to have you in my life. 💗')">
+                💗
+            </button>
+
+            <button class="love-heart"
+                onclick="reveal(this, 'Distance cannot erase the memories we share. 🌷')">
+                💖
+            </button>
+
+            <button class="love-heart"
+                onclick="reveal(this, 'I hope you are taking care of yourself, shri elakkiya Akka. 🫶')">
+                💕
+            </button>
+
+            <button class="love-heart"
+                onclick="reveal(this, 'No matter how busy life gets, you are remembered. 💌')">
+                ❤️
+            </button>
+
+        </div>
+
+        <p id="heartMessage" class="note">
+            Tap all four hearts.
+        </p>
+
+    </section>
+
+    <!-- PAGE 4: FINAL MESSAGE -->
+    <section id="page4" class="hidden">
+
+        <h1>Until I See You Again,<br>shri elakkiya Akka 🫂</h1>
+
+        <div class="wish">
+
+            I miss you more than I can properly put into words.
+            Sometimes, the smallest things remind me of you,
+            and I wish you were here so I could share them with you.
+
+            <br><br>
+
+            I hope life is treating you kindly. Even when
+            we're apart, you still have a special place in my
+            heart. I'm looking forward to the next time we can
+            talk, laugh, and make more memories together.
+
+            <br><br>
+
+            Until then, please take care of yourself.
+            This is just a little reminder that you matter
+            to me, you're thought of often, and you're missed. ❤️
+
+        </div>
+
+        <div class="illustration">🌙💌🫶</div>
+
+        <p>
+            Sending you the biggest virtual hug.
+            Missing you, shri elakkiya Akka. 💗
+        </p>
+
+        <button class="primary" onclick="restart()">
+            Read it again ↻
+        </button>
+
+        <p class="note">
+            Made with love, just for you. 💕
+        </p>
+
+    </section>
+
+</div>
+
+<script>
+
+// Create floating hearts in the background
+const heartArea = document.getElementById("hearts");
+
+for (let i = 0; i < 22; i++) {
+
+    const heart = document.createElement("span");
+
+    heart.className = "heart";
+    heart.textContent = Math.random() > 0.5 ? "♥" : "♡";
+    heart.style.left = Math.random() * 100 + "%";
+    heart.style.top = Math.random() * 100 + "%";
+    heart.style.fontSize =
+        (16 + Math.random() * 18) + "px";
+
+    heart.style.animationDelay =
+        (-Math.random() * 6) + "s";
+
+    heartArea.appendChild(heart);
+}
+
+
+// Switch between pages
+function showPage(number) {
+
+    for (let i = 1; i <= 4; i++) {
+
+        document.getElementById("page" + i)
+            .classList.toggle("hidden", i !== number);
+
+    }
+
+}
+
+
+// Start the surprise and background music
+function start() {
+
+    const music = document.getElementById("music");
+
+    music.volume = 0.25;
+
+    music.play().catch(() => {
+        console.log(
+            "Music could not start. Check your internet connection."
+        );
+    });
+
+    showPage(2);
+
+}
+
+
+// Second button on the welcome page
+function notYet() {
+
+    document.getElementById("tease").textContent =
+        "Whenever you're ready, shri elakkiya Akka. This message is just for you. 💗";
+
+}
+
+
+// Reveal messages when hearts are clicked
+let openedHearts = 0;
+
+function reveal(button, message) {
+
+    if (button.dataset.opened === "true") {
+        return;
+    }
+
+    button.dataset.opened = "true";
+    button.textContent = "💌";
+
+    openedHearts++;
+
+    document.getElementById("heartMessage").textContent =
+        message + " (" + openedHearts + "/4)";
+
+    if (openedHearts === 4) {
+
+        setTimeout(() => {
+            showPage(4);
+        }, 1800);
+
+    }
+
+}
+
+
+// Restart the website
+function restart() {
+
+    openedHearts = 0;
+
+    document.querySelectorAll(".love-heart")
+        .forEach((button, index) => {
+
+            button.dataset.opened = "false";
+
+            button.textContent =
+                ["💗", "💖", "💕", "❤️"][index];
+
+        });
+
+    document.getElementById("heartMessage").textContent =
+        "Tap all four hearts.";
+
+    showPage(1);
+
+}
+
+</script>
+
+</body>
+      </html>
